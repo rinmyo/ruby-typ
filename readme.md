@@ -15,6 +15,7 @@ this project is based on [@Saito Atsush](https://github.com/SaitoAtsush)’s gre
 ---
 
 組版プログラミング言語Typstのためのルビライブラリーです。下記のような効果が実現可能です
+
 <center>
 とある科学の<ruby>超電磁砲 <rp>(</rp><rt>レールガン</rt><rp>)</rp></ruby>
 </center>
