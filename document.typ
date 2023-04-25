@@ -1,7 +1,7 @@
 // Set the document's basic properties.
 #set document(author: ("rinmyo"), title: "ruby-typ")
 #set page(numbering: "1", number-align: center)
-#set text(font: "Linux Libertine", lang: "jp")
+#set text(font: "Linux Libertine", lang: "en")
 #show link: underline
 
 // Title row.
@@ -29,13 +29,15 @@
 = Introduction
 A library to implement ruby just like this:
 
-#ruby(alignment:"between", "レールガン")[超電磁砲]、#ruby("ページ")[頁]、#ruby("きょう")[今日]もいい#ruby("てん|き")[天|気]、
+#align(center)[
+  #ruby(alignment:"between", "レールガン")[超電磁砲]、#ruby("ページ")[頁]、#ruby("きょう")[今日]もいい#ruby("てん|き")[天|気]
+]
 
 = Usage 
 
 To use ruby-typ, you should import the `get_ruby` from `ruby.typ` at first.
 
-```typc
+```typ
 #import "ruby.typ": get_ruby 
 ```
 
@@ -50,14 +52,15 @@ get_ruby(
 ```
 
 to get a ruby function with default setting
-```typc
+```typ
 #let ruby = get_ruby()
 ```
 
+and the `ruby()` function will receive two arguments, the first one for ruby text and the second one for ruby body. 
 for example, if you'd like to use a `start` alignment.
-```typc
+```typ
 #let ruby = get_ruby(alignment: "start")
-#ruby("しずく")[雫]
+#ruby("しずく", "雫")
 ```
 which the result will be
 #let ruby = get_ruby(alignment: "start")
@@ -65,11 +68,30 @@ which the result will be
 
 #let ruby = get_ruby()
 
+== ruby for content
+Besides the `string`, it's also allowed to pass a content except sequence as `ruby()`'s ruby body just like how other element functions do. 
+
+```typ
+  #ruby("したた")[滴]る
+```
+
+will produce
+
+#align(center)[#ruby("したた")[滴]る]
+
+Moreover, almost all kinds of content excluding sequence can be passed, which is convient for some styled text.
+
+```typ
+  #ruby("エックス|せん")[#underline[_*X|ray*_]]
+```
+will output
+#align(center)[#ruby("エックス|せん")[_*X|ray*_]]
+
 == mono/group ruby
 
 ruby-typ supports mono-ruby and group-ruby automatically, which depends on wether the inputs are seperated by a delimiter.
 
-```typc
+```typ
   #ruby("とうきょうこうぎょうだいがく")[東京工業大学]
   #ruby("とう|きょう|こう|ぎょう|だい|がく")[東|京|工|業|大|学]
 ```

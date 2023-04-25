@@ -17,7 +17,7 @@
     style(st=> {
         let bodysize = measure(rb, st)
         let rt_plain_width = measure(text(size: size, rt), st).width
-        let width = if(rt_plain_width > bodysize.width) {rt_plain_width} else {bodysize.width}
+        let width = if rt_plain_width > bodysize.width {rt_plain_width} else {bodysize.width}
         let rubytext = box(width: width, align(if(alignment=="start"){left}else{center}, text(size: size, chars)))
         let textsize = measure(rubytext, st)
         let dx = textsize.width - bodysize.width
