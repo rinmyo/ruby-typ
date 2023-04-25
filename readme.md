@@ -27,9 +27,11 @@ this project is based on [@Saito Atsush](https://github.com/SaitoAtsush)’s gre
 ---
 
 ruby-typ 係爲 Typst 開發底 ruby 庫. 可以實現如下效果
+
 <center>
 某科学的<ruby>超電磁砲<rp>(</rp><rt>レールガン</rt><rp>)</rp></ruby>
 </center>
+
 欲知詳情, 請閱 document.pdf 檔
 
 ## 感謝
