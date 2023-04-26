@@ -110,3 +110,4 @@ this project is based on #link("https://github.com/SaitoAtsush")[Saito Atsush]'s
 
 = Changelog
  - [20230425] Release the initial version.
+ - [20230426] a newer implement
