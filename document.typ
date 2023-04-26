@@ -46,6 +46,7 @@ To use ruby-typ, you should import the `get_ruby` from `ruby.typ` at first.
 get_ruby(
   size: .5em,              // the font size of ruby text
   dy: 0pt,                 // to add a shifting space on y axis
+  pos: top,                // the position of ruby text, can be (top, bottom)
   alignment: "center",     // can be ("center", "start", "between", "around")
   delimeter: "|"           // the delimeter used in mono-ruby
 )
@@ -109,5 +110,6 @@ As you see, ruby-typ is able to adjust the spaces of the body texts automaticall
 this project is based on #link("https://github.com/SaitoAtsush")[Saito Atsush]'s great idea and the #link("https://zenn.dev/saito_atsushi/articles/ff9490458570e1")[original source codes] posted on their blog
 
 = Changelog
- - [20230425] Release the initial version.
- - [20230426] a newer implement
+ - [20230425a] Release the initial version.
+ - [20230426a] a newer implement
+ - [20230426b] add `pos` option to specify the position of ruby texts

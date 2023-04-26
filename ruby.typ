@@ -1,6 +1,10 @@
-#let _ruby(rt, rb, size, dy, alignment, delimeter) = {
+#let _ruby(rt, rb, size, pos, dy, alignment, delimeter) = {
     if not ("center", "start", "between", "around").contains(alignment) {
       panic("'" + repr(alignment) + "' is not a valid ruby alignment")
+    }
+
+    if not (top, bottom).contains(pos) {
+      panic("pos can be either top or bottom but '"+ repr(pos) +"'")
     }
 
     let extract_content(content, fn: it => it) = {
@@ -53,10 +57,11 @@
             let (t_dx, l_dx, r_dx) = if(alignment=="start"){(0pt, 0pt, dx)}else{(-dx/2, dx/2, dx/2)}
             let (l, r) = (i != 0,  i != rb_array.len() - 1)
             sum_width += if l {0pt} else {t_dx}
+            let dy = if pos == top {-1.5 * textsize.height - dy} else {bodysize.height + textsize.height/2 + dy}
             place(
                 top+left, 
                 dx: sum_width, 
-                dy: -1.5*textsize.height + dy, 
+                dy: dy, 
                 rubytext
             )
             sum_width += width
@@ -70,18 +75,20 @@
 #let get_ruby(
   size: .5em, 
   dy: 0pt, 
+  pos: top,
   alignment: "center", 
   delimeter: "|"
-) = (rt, rb, alignment: alignment) => _ruby(rt, rb, size, dy, alignment, delimeter)
+) = (rt, rb, alignment: alignment) => _ruby(rt, rb, size, pos, dy, alignment, delimeter)
 
-#let test() = {
-  set box(stroke: red+.001pt)
-  set text(size: 50pt)
-  show: align.with(center)
-  let ruby = get_ruby()
-
-  ruby("エックス|せん")[_*X|ray*_]
-}
+#let test() = [
+  #set box(stroke: red+.001pt)
+  #set text(size: 50pt)
+  #show: align.with(center)
+  #let ruby = get_ruby(pos: bottom)
+  #ruby("した")[下]
+  #let ruby = get_ruby()
+  #ruby("うえ")[上]
+]
 
 //#test()
 
