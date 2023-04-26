@@ -34,10 +34,9 @@
       }
     
     box(style(st=> {
-        let i = 0
         let sum_body = []
         let sum_width = 0pt
-        assert(rt_array.len() == rb_array.len())
+        let i = 0
         while i < rb_array.len() {
             let (body, ruby) = (rb_array.at(i), rt_array.at(i))
             let bodysize = measure(body, st)
