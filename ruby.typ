@@ -6,9 +6,9 @@
     let extract_content(content, fn: it => it) = {
       let func = content.func()
       return if func == text or func == raw { 
-        (content.text, func)
+        (content.text, fn)
       } else {
-        extract_content(content.body, it => func(fn(it)))
+        extract_content(content.body, fn: it => func(fn(it)))
       }  
     }
 
@@ -53,13 +53,14 @@
             let dx = textsize.width - bodysize.width
             let (t_dx, l_dx, r_dx) = if(alignment=="start"){(0pt, 0pt, dx)}else{(-dx/2, dx/2, dx/2)}
             let (l, r) = (i != 0,  i != rb_array.len() - 1)
+            sum_width += if l {0pt} else {t_dx}
             place(
                 top+left, 
-                dx: sum_width + t_dx, 
+                dx: sum_width, 
                 dy: -1.5*textsize.height + dy, 
                 rubytext
             )
-            sum_width += width 
+            sum_width += width
             sum_body += if l {h(l_dx)} + body + if r {h(r_dx)}
             i += 1
         }
@@ -72,9 +73,17 @@
   dy: 0pt, 
   alignment: "center", 
   delimeter: "|"
-) = (rt, rb, alignment: alignment) => _ruby(
-    rt, rb, 
-    size: .5em, dy: 0pt, 
-    alignment: "center",
-    delimeter: "|"
-)
+) = (rt, rb, alignment: alignment) => _ruby(rt, rb, size, dy, alignment, delimeter)
+
+#let test() = {
+  set box(stroke: red+.001pt)
+  set text(size: 50pt)
+  show: align.with(center)
+  let ruby = get_ruby()
+
+  ruby("エックス|せん")[_*X|ray*_]
+}
+
+//#test()
+
+
