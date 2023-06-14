@@ -1,4 +1,4 @@
-#let _ruby(rt, rb, size, pos, dy, alignment, delimeter) = {
+#let _ruby(rt, rb, size, pos, dy, alignment, delimiter) = {
     if not ("center", "start", "between", "around").contains(alignment) {
       panic("'" + repr(alignment) + "' is not a valid ruby alignment")
     }
@@ -18,13 +18,13 @@
 
     let rb_array = if type(rb) == "content" {
         let (inner, func) = extract_content(rb)
-        inner.split(delimeter).map(func)
+        inner.split(delimiter).map(func)
     } else if type(rb) == "string" {
-        rb.split(delimeter)
+        rb.split(delimiter)
     } else {(rb,)}
     assert(type(rb_array) == "array")
 
-    let rt_array = rt.split(delimeter)
+    let rt_array = rt.split(delimiter)
 
     if rt_array.len() != rb_array.len() {
         rt_array = (rt,)
@@ -77,8 +77,8 @@
   dy: 0pt, 
   pos: top,
   alignment: "center", 
-  delimeter: "|"
-) = (rt, rb, alignment: alignment) => _ruby(rt, rb, size, pos, dy, alignment, delimeter)
+  delimiter: "|"
+) = (rt, rb, alignment: alignment) => _ruby(rt, rb, size, pos, dy, alignment, delimiter)
 
 #let test() = [
   #set box(stroke: red+.001pt)
@@ -91,5 +91,3 @@
 ]
 
 //#test()
-
-
