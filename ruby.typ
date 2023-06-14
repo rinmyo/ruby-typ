@@ -20,7 +20,7 @@
         let (inner, func) = extract_content(rb)
         inner.split(delimeter).map(func)
     } else if type(rb) == "string" {
-        rb.split(delimiter)
+        rb.split(delimeter)
     } else {(rb,)}
     assert(type(rb_array) == "array")
 
