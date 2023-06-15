@@ -48,7 +48,7 @@ get_ruby(
   dy: 0pt,                 // to add a shifting space on y axis
   pos: top,                // the position of ruby text, can be (top, bottom)
   alignment: "center",     // can be ("center", "start", "between", "around")
-  delimeter: "|"           // the delimeter used in mono-ruby
+  delimiter: "|"           // the delimiter used in mono-ruby
 )
 ```
 
