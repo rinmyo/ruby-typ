@@ -41,7 +41,7 @@ To use ruby-typ, you should import the `get_ruby` from `ruby.typ` at first.
 #import "ruby.typ": get_ruby 
 ```
 
-`get_ruby` is a higher-order function which be used to configure ruby-typ. and it will return a funtion for ruby. and its function signature is
+`get_ruby` is a higher-order function which be used to configure ruby-typ. and it will return a function for ruby. and its function signature is
 ```typc
 get_ruby(
   size: .5em,              // the font size of ruby text
@@ -80,7 +80,7 @@ will produce
 
 #align(center)[#ruby("したた")[滴]る]
 
-Moreover, almost all kinds of content excluding sequence can be passed, which is convient for some styled text.
+Moreover, almost all kinds of content excluding sequence can be passed, which is convenient for some styled text.
 
 ```typ
   #ruby("エックス|せん")[#underline[_*X|ray*_]]
@@ -90,7 +90,7 @@ will output
 
 == mono/group ruby
 
-ruby-typ supports mono-ruby and group-ruby automatically, which depends on wether the inputs are seperated by a delimiter.
+ruby-typ supports mono-ruby and group-ruby automatically, which depends on whether the inputs are separated by a delimiter.
 
 ```typ
   #ruby("とうきょうこうぎょうだいがく")[東京工業大学]
